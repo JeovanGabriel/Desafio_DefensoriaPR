@@ -1,20 +1,21 @@
 #Instalando as bibliotecas
 from fastapi import FastAPI
 import requests
+import datetime as dt
 
 #Criando a API e a requisição da URL
-app = FastAPI()
+alternative_app = FastAPI()
 requisicao = requests.get("https://testedefensoriapr.pythonanywhere.com/precos")
 
 #Texto a mostra na HomePage
-@app.get("/")
+@alternative_app.get("/")
 def home():
-    return "Insira a data de hoje na url ao lado da / (Ex: DD-MM-AAAA)"
+    return "Insira (precos) na sua URL para receber os preços atuais dos tapetes"
 
-#Parametro data
-@app.get("/precos/{data}")
-def pegar_data(data: str):
+#sem parametros, apenas a requisição com o "dt.date.today()" usando a nossa data atual 
+@alternative_app.get("/precos")
+def precos():
     if requisicao.status_code == 200: #Caso o Satus-Code fique em 200 (Indicando que houve contato)
-        return { "Data Requisitada" : data, "Preços" : requisicao.json()}
+        return {"Data Requisitada" : dt.date.today(), "Preços" : requisicao.json()}
     else: #Caso o Status-Code seja diferente de 200
         return "Infelizmente, não conseguimos encontrar os preços, por favor volte mais tarde"
