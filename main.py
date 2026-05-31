@@ -1,10 +1,9 @@
 from fastapi import FastAPI
 import requests
-import json
 
 app = FastAPI()
 parametro = {"Data Atual":"valor_data"}
-requisicao = requests.get("https://testedefensoriapr.pythonanywhere.com/precos", params=parametro)
+requisicao = requests.get("https://testedefensoriapr.pythonanywhere.com/precos")
 
 @app.get("/")
 def home():
@@ -12,4 +11,7 @@ def home():
 
 @app.get("/{data}")
 def pegar_data(data: str):
-    return requisicao.json()
+    if requisicao.status_code == 200:
+        return {"Data Atual" : data, "Preços" : requisicao.json()}
+    else:
+        return "Infelizmente, não conseguimos encontrar os preços, por favor volte mais tarde"
