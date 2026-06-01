@@ -7,15 +7,15 @@ import datetime as dt
 alternative_app = FastAPI()
 requisicao = requests.get("https://testedefensoriapr.pythonanywhere.com/precos")
 
-#Texto a mostra na HomePage
+#Texto a ser visualizado na HomePage
 @alternative_app.get("/")
 def home():
     return "Insira (precos) na sua URL para receber os preços atuais dos tapetes"
 
-#sem parametros, apenas a requisição com o "dt.date.today()" usando a nossa data atual 
+#sem parâmetros, apenas a requisição com o "dt.date.today()" usando a a data atual 
 @alternative_app.get("/precos")
 def precos():
     if requisicao.status_code == 200: #Caso o Satus-Code fique em 200 (Indicando que houve contato)
         return {"Data Requisitada" : dt.date.today(), "Preços" : requisicao.json()}
-    else: #Caso o Status-Code seja diferente de 200
+    else: #Caso o Status Code seja diferente de 200
         return "Infelizmente, não conseguimos encontrar os preços, por favor volte mais tarde"

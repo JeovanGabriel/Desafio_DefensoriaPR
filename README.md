@@ -6,8 +6,8 @@
 
  ### 1. Preparação
 
- Primeiro quero que foque na pasta "Main.py" pois é nela que está a parte principal do código, a "AlternativeMain.py" irei explicar depois.
- As bibliotecas que utilizei e devem ser instaladas são: **FastAPI, Requests e UviCorn** através de:
+ O arquivo "main.py" é o qual eu irei apresentar, sendo o arquivo principal da API, o "alternative_main.py" é uma ideia de implementação alternativa que está descrito posteriormente neste Readme.
+ As bibliotecas que utilizei e devem ser instaladas são: **FastAPI, Requests e Uvicorn** através de:
 
  ```bash
  pip install fastapi
@@ -15,15 +15,15 @@
  pip install uvicorn
  ```
 
- Para conectar a máquina local com a internet foi usado o UviCorn tendo que abrir o Terminal e inserir o código:
+ E para se conectar a máquina local com a internet deve-se ativar o Uvicorn através do terminal:
 
  ```bash
  python -m uvicorn main:app 
  ```
 
- sendo ``main`` o arquivo main.py que criei e ``app`` a variável que guarda a nossa API.
+ sendo ``main`` o arquivo main.py que criei e ``app`` a variável que guarda a API.
 
- ### 2. Inserir os paramêtros
+ ### 2. Inserir os parâmetros
 
  Quando estiver testando a API dentro da sua máquina insira na URL a sua data atual junto da rota existente sempre colocando nesta formatação "DD-MM-AAAA", e após isso você receberá como resultado os preços dos tapetes em formato JSON, junto da data atual requisitada. Ex: ``http://127.0.0.1:8000/01-06-2026``
 

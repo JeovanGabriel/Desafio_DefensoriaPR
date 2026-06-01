@@ -6,15 +6,15 @@ import requests
 app = FastAPI()
 requisicao = requests.get("https://testedefensoriapr.pythonanywhere.com/precos")
 
-#Texto a mostra na HomePage
+#Texto a ser visualizado na HomePage
 @app.get("/")
 def home():
     return "Insira a data de hoje na url ao lado da / (Ex: DD-MM-AAAA)"
 
-#Parametro data
+#Parâmetro data
 @app.get("/precos/{data}")
 def pegar_data(data: str):
     if requisicao.status_code == 200: #Caso o Satus-Code fique em 200 (Indicando que houve contato)
         return { "Data Requisitada" : data, "Preços" : requisicao.json()}
-    else: #Caso o Status-Code seja diferente de 200
+    else: #Caso o Status Code seja diferente de 200
         return "Infelizmente, não conseguimos encontrar os preços, por favor volte mais tarde"
