@@ -12,7 +12,7 @@ def home():
     return "Insira a data de hoje na url ao lado da / (Ex: DD-MM-AAAA)"
 
 #Parâmetro data
-@app.get("/precos/{data}")
+@app.get("/{data}")
 def pegar_data(data: str):
     if requisicao.status_code == 200: #Caso o Satus-Code fique em 200 (Indicando que houve contato)
         return { "Data Requisitada" : data, "Preços" : requisicao.json()}

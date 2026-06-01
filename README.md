@@ -23,6 +23,19 @@
 
  sendo ``main`` o arquivo main.py que criei e ``app`` a variável que guarda a API.
 
+ Caso dê este erro:
+
+ ```bash
+ ERROR:    Error loading ASGI app. Could not import module "main".
+ ```
+ Provavelmente por ter instalado o arquivo zip do repositório, o seu compilador esteja na pasta raiz e não na mesma pasta em que o arquivo "main.py" está, por isso você deve utilizar o:
+
+ ```bash
+ cd Desafio_DefensoriaPR-main
+ ```
+
+ E aí sim ativar o Uvicorn.
+
  ### 2. Inserir os parâmetros
 
  Quando estiver testando a API dentro da sua máquina insira na URL a sua data atual junto da rota existente sempre colocando nesta formatação "DD-MM-AAAA", e após isso você receberá como resultado os preços dos tapetes em formato JSON, junto da data atual requisitada. Ex: ``http://127.0.0.1:8000/01-06-2026``
